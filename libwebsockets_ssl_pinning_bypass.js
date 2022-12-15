@@ -1,5 +1,5 @@
 
-function hook_curl_easy_setopt( _export, module_n ) {
+function hook_lws_client_connect_info( _export, module_n ) {
 
 const some_func = new NativeFunction(_export, "void", ["pointer"]);
 
@@ -19,7 +19,7 @@ struct lws_client_connect_info {
 	ref: https://github.com/warmcat/libwebsockets/blob/c1b8e20246248c907c635a7f6e62280244cc44b9/lib/core-net/client/connect.c
 */
 
-  //console.log(pointer.readInt()) // size - 4 byte
+
   console.log("[#] libwebsockets SSL Pinning bypass script [#]")
   console.log("Hostname: "+pointer.add(Process.pointerSize).readPointer().readUtf8String()); 
   console.log("Port: "+pointer.add(Process.pointerSize*2).readInt()); 
@@ -44,7 +44,7 @@ function main() {
         if ( _export != null ) {
             lws_client_connect_via_info_found = true;
             console.log( `[#] Found lws_client_connect_via_info in ${_module.name}` )
-            hook_curl_easy_setopt( _export ,_module.name);
+            hook_lws_client_connect_info( _export ,_module.name);
         }
     }
 
