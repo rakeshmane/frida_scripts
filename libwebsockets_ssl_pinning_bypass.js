@@ -19,7 +19,7 @@ struct lws_client_connect_info {
 	ref: https://github.com/warmcat/libwebsockets/blob/c1b8e20246248c907c635a7f6e62280244cc44b9/lib/core-net/client/connect.c
 */
 
-  console.log(pointer.readInt()) // size - 4 byte
+  //console.log(pointer.readInt()) // size - 4 byte
   console.log("[#] libwebsockets SSL Pinning bypass script [#]")
   console.log("Hostname: "+pointer.add(Process.pointerSize).readPointer().readUtf8String()); 
   console.log("Port: "+pointer.add(Process.pointerSize*2).readInt()); 
